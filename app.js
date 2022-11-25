@@ -37,8 +37,17 @@
 //     contenedor.innerHTML = html;
 
 // }
-
+let sound = new Audio("./src/sound/mainTheme.mp3") ;
 let pokemonContainer =  document.querySelector('.lista');
+
+//MUSICA 
+playBtn.addEventListener('click',()=>{
+    sound.play();
+})
+pauseBtn.addEventListener('click', ()=>{
+    sound.pause();
+})
+
 
 function fetchPokemon(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -94,3 +103,5 @@ fetchPokemons(101);
 function recargar(){
     window.location.assign(`detalles.html`);
 }
+
+

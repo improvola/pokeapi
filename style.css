@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
-    padding: 1.5%;
+
     box-sizing: border-box;
 }
 
@@ -23,8 +23,41 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh;
+    height: 70vh;
 }
+
+/*Header*/
+.header__logo {
+  width: 100%;
+  
+}
+@media only screen and (min-width: 768px) {
+  .header__logo {
+    width: 100%;
+    margin: 20px auto 100px auto;
+  }
+}
+
+#header__home {
+  cursor: pointer;
+  transition: ease 0.5s;
+}
+#header__home:hover {
+  transform: scale(1.5);
+}
+
+/*Header fijo*/
+#main-header {
+	background: rgb(255, 255, 255);
+	color: rgb(182, 0, 0);
+	height: 300px;
+  width: 100%;
+}	
+	#main-header a {
+		color: rgb(255, 51, 51);
+	}
+
+
 
 main {
     min-height: 70vh;
@@ -92,6 +125,10 @@ main {
 
 .card h3 {
     text-align: center;
+}
+
+h1{
+  color: #fa1900;
 }
 
 h2 {
@@ -184,5 +221,64 @@ footer {
 @media (min-width: 768px) {
   .button-56 {
     padding: 0 40px;
+  }
+}
+
+/*BOTON PLAY MUSICA*/
+.button-55 {
+  align-items: center;
+  background-color: #ae1400;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+  font-family: Inter,sans-serif;
+  font-size: 12px;
+  height: 25px;
+  justify-content: center;
+  line-height: 17px;
+  max-width: 100%;
+  padding: 0 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 25px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-55:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-55:active {
+  background-color: #9e1000;
+  outline: 0;
+}
+
+.button-55:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-55 {
+    padding: 0 20px;
   }
 }

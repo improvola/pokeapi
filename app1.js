@@ -1,5 +1,17 @@
 
 let pokemonContainer =  document.querySelector('.detalles');
+const urlTypePokemons = "https://pokeapi.co/api/v2/type/";
+
+let sound = new Audio("./src/sound/pokemon-battle.mp3") ;
+
+//MUSICA 
+playBtn.addEventListener('click',()=>{
+    sound.play();
+})
+pauseBtn.addEventListener('click', ()=>{
+    sound.pause();
+})
+
 
 function fetchPokemon(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -34,7 +46,10 @@ function cardPokemon(pokemon){
     base.textContent = `Base Exp: ${pokemon.base_experience}`;
 
     let peso = document.createElement('p');
-    peso.textContent = `Peso: ${pokemon.weight}`;
+    peso.textContent = `Peso: ${pokemon.weight} kg`;
+
+    let tipo = document.createElement('p');
+    tipo.textContent = `Tipo: ${pokemon.types[0].type.name}`;
     
     let atac = document.createElement('p');
     atac.textContent = `Ataque: ${pokemon.moves[0].move.name}`;
@@ -53,9 +68,11 @@ function cardPokemon(pokemon){
     card.appendChild(spriteContainer);
     card.appendChild(number);
     card.appendChild(name);
+    card.appendChild(tipo);
     card.appendChild(base);
     card.appendChild(peso);
     card.appendChild(atac);
+    
     card.appendChild(button);
     
 
