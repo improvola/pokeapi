@@ -73,6 +73,7 @@ function cardPokemon(pokemon){
     button.classList.add('button-56');
     button.textContent = "Mas";
     button.href = `#${pokemon.id}`;
+    button.addEventListener("click", recargar);
 
 
     let name = document.createElement('p');
@@ -90,3 +91,6 @@ function cardPokemon(pokemon){
 
 fetchPokemons(101);
 
+function recargar(){
+    window.location.assign(`detalles.html`);
+}
