@@ -1,8 +1,9 @@
 
 //MUSICA 
 let sound = new Audio("./src/sound/mainTheme.mp3") ;
-let pokemonContainer =  document.querySelector('.lista');
 
+let pokemonContainer =  document.querySelector('.lista');
+let historialContainer = document.querySelector('.historial');
 
 playBtn.addEventListener('click',()=>{
     sound.play();
@@ -12,7 +13,45 @@ pauseBtn.addEventListener('click', ()=>{
 })
 
 
+//HISTORIAL
 
+function solicitarPokemon(){
+    pokemon =  cardHistorial();
+    guardarPokemon();
+    mostrarPokemon();
+}
+
+
+function guardarPokemon(){
+    console.log('Guardando dato de Pokemon');
+    localStorage.setItem('dato', pokemon);
+}
+
+function leerPokemon(){
+    console.log('leer nombre del pokemon');
+    pokemon = localStorage.getItem('dato');
+    console.log(pokemon);
+    mostrarPokemon();
+}
+
+
+function mostrarPokemon(){
+    titulo.textContent = `Pokemon buscado: ${pokemon}`;
+    fetchPokemons(id);
+    cardHistorial();
+}
+
+function cardHistorial(){
+    let buttonH = document.createElement('div');
+    buttonH.classList.add('button-57');
+    buttonH.textContent = "HISTORIAL";
+    buttonH.id = pokemon.id;
+    buttonH.addEventListener("click", recargar);
+
+    card.appendChild(buttonH);
+    historialContainer.appendChild(buttonH);
+
+}
 
 //BUSCADOR
 const searchPokemon = event => {
@@ -78,7 +117,7 @@ function cardPokemon(pokemon){
     card.appendChild(name);
     card.appendChild(button);
 
-    pokemonContainer.appendChild(card);
+    his.appendChild(card);
     
 }
 //IMPRIMIR
@@ -93,45 +132,9 @@ function recargar(evento){
     //fetchPokemon();
 }
 
+//RECARGAR HISTORIAL
+function recargarH(){
+    console.log('pagina recargada');
+    window.location.assign(`historial.html`);
+}
 
-
-
-
-// let contenedor =  document.querySelector('.lista');
-
-// fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
-// .then(  respuesta => {
-//     console.log('Se realizo el fetch');
-//     return respuesta.json();
-// })
-// .then( respuestaJSON => {
-//     console.log('Respuesta jSON');
-//     console.log(respuestaJSON);
-//     let json = respuestaJSON;
-//     console.log(json.results);
-//     console.log('probando');
-//     renderizar(json.results);
-// })
-// .catch( error => {
-//     console.log('Upss hay un error');
-// })
-
-
-// function renderizar(lista){
-//     let html = '';
-
-//     console.log(contenedor)
-//     lista.forEach(item => {
-//         console.log(item)
-//         html += `   
-//                     <div class="card" style="width: 18rem;">
-//                     <h3 class="card-title">${item.name}</h4>
-//                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Pok%C3%A9ball.png" alt="" class="card-img-top" style="max-width:150px;">
-                    
-//                     <a href="detalles.html" class="button-56">Ver mas</a>
-//                 </div>`
-//     });
-
-//     contenedor.innerHTML = html;
-
-// }
