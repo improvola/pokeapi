@@ -21,11 +21,11 @@ function fetchPokemon(id){
     })
 }
 
-function fetchPokemons(number) {
-    for (let i = 1; i <= number; i++){
-        fetchPokemon(i);
-    }
-}
+// function fetchPokemons(number) {
+//     for (let i = 1; i <= number; i++){
+//         fetchPokemon(i);
+//     }
+// }
 
 function cardPokemon(pokemon){
     let card = document.createElement('div');
@@ -79,10 +79,10 @@ function cardPokemon(pokemon){
     pokemonContainer.appendChild(card);
     
 }
-fetchPokemons(1);
+fetchPokemon(1);
 
 
 function recargar(){
     window.location.assign('index.html');
-    fetchPokemons(`${id}`);
+
 }

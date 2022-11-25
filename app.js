@@ -49,6 +49,21 @@ pauseBtn.addEventListener('click', ()=>{
 })
 
 
+const searchPokemon = event => {
+    event.preventDefault();
+    const { value } = event.target.pokemon;
+    fetch(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase()}`)
+        .then(data => data.json())
+        .then(response => renderPokemonData(response)).catch(err => alert('error'))
+}
+
+const renderPokemonData = data => {
+    const sprite =  data.sprites.front_default;
+    const { stats, types } = data;
+
+    pokemonContainer.textContent = cardPokemon(pokemon);
+}
+
 function fetchPokemon(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     .then(res => res.json())
@@ -101,7 +116,8 @@ function cardPokemon(pokemon){
 fetchPokemons(101);
 
 function recargar(){
+    
     window.location.assign(`detalles.html`);
+    fetchPokemon();
 }
-
 
