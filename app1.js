@@ -1,5 +1,7 @@
 
 let pokemonContainer =  document.querySelector('.detalles');
+let query = new URLSearchParams(location.search);
+let id = query.get('id');
 const urlTypePokemons = "https://pokeapi.co/api/v2/type/";
 
 let sound = new Audio("./src/sound/pokemon-battle.mp3") ;
@@ -79,7 +81,7 @@ function cardPokemon(pokemon){
     pokemonContainer.appendChild(card);
     
 }
-fetchPokemon(1);
+fetchPokemon(id);
 
 
 function recargar(){
